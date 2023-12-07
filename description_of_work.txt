@@ -1,0 +1,32 @@
+rule "Primo VE - Lds55"
+    when
+   	 MARC."380" has any "a,3"
+    then
+            	set TEMP"1" to MARC."380" subfields "3"
+            	set TEMP"2" to MARC."380" subfields "a"
+            	concatenate with delimiter  (TEMP"1",TEMP"2"," ")
+                add prefix (TEMP"1","Form of Work: ")
+   	        create pnx."display"."lds55" with TEMP"1"
+end
+
+rule "Primo VE - Lds55/02"
+    when
+   	 MARC."381" has any "a,3"
+    then
+            	set TEMP"1" to MARC."381" subfields "3"
+            	set TEMP"2" to MARC."381" subfields "a"
+            	concatenate with delimiter  (TEMP"1",TEMP"2"," ")
+                add prefix (TEMP"1","Other distinguishing characteristic: ")
+   	        create pnx."display"."lds55" with TEMP"1"
+end
+
+rule "Primo VE - Lds55/03"
+    when
+   	 MARC."384" has any "a,3"
+    then
+            	set TEMP"1" to MARC."384" subfields "3"
+            	set TEMP"2" to MARC."384" subfields "a"
+            	concatenate with delimiter  (TEMP"1",TEMP"2"," ")
+                add prefix (TEMP"1","Key: ")
+   	        create pnx."display"."lds55" with TEMP"1"
+end

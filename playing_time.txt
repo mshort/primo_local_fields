@@ -1,0 +1,15 @@
+rule "Primo VE - Lds53"
+	when
+		MARC is "306"."a"
+	then
+                set TEMP"1" to MARC."306" subfields "a"
+                set TEMP"2" to MARC."306" subfields "a"
+                set TEMP"3" to MARC."306" subfields "a"
+                remove substring using regex (TEMP"1","(.{4})$")
+                remove substring using regex (TEMP"2","^(.{2})")
+                remove substring using regex (TEMP"2","(.{2})$")
+                remove substring using regex (TEMP"3","^(.{4})")
+		create pnx."display"."lds53" with TEMP"1"
+                append TEMP"2" to pnx."display"."lds53" delimited by ":"
+                append TEMP"3" to pnx."display"."lds53" delimited by ":"        
+end

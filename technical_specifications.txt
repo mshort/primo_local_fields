@@ -1,0 +1,130 @@
+rule "Primo VE - Lds54"
+	when
+		MARC."344" has any "a"
+	then
+                set TEMP"1" to MARC."344" subfields "a"
+add prefix (TEMP"1","Type of recording: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/02"
+	when
+		MARC."344" has any "b"
+	then
+                set TEMP"1" to MARC."344" subfields "b"
+add prefix (TEMP"1","Recording medium: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/03"
+	when
+		MARC."344" has any "c"
+	then
+                set TEMP"1" to MARC."344" subfields "c"
+add prefix (TEMP"1","Playing speed: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/04"
+	when
+		MARC."344" has any "d"
+	then
+                set TEMP"1" to MARC."344" subfields "d"
+add prefix (TEMP"1","Groove characteristic: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/05"
+	when
+		MARC."344" has any "e"
+	then
+                set TEMP"1" to MARC."344" subfields "e"
+add prefix (TEMP"1","Track configuration: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/06"
+	when
+		MARC."344" has any "f"
+	then
+                set TEMP"1" to MARC."344" subfields "f"
+add prefix (TEMP"1","Tape configuration: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/07"
+	when
+		MARC."344" has any "g"
+	then
+                set TEMP"1" to MARC."344" subfields "g"
+add prefix (TEMP"1","Configuration of playback channels: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/08"
+	when
+		MARC."344" has any "h"
+	then
+                set TEMP"1" to MARC."344" subfields "h"
+add prefix (TEMP"1","Special playback characteristics: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/09"
+	when
+		MARC."344" has any "i"
+	then
+                set TEMP"1" to MARC."344" subfields "i"
+add prefix (TEMP"1","Sound content: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/10"
+	when
+		MARC."344" has any "j"
+	then
+                set TEMP"1" to MARC."344" subfields "j"
+add prefix (TEMP"1","Original capture and storage technique: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/11"
+	when
+		MARC."345" has any "a"
+	then
+                set TEMP"1" to MARC."345" subfields "a"
+add prefix (TEMP"1","Presentation format: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/12"
+	when
+		MARC."345" has any "b"
+	then
+                set TEMP"1" to MARC."345" subfields "b"
+add prefix (TEMP"1","Projection speed: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE - Lds54/13"
+	when
+		MARC."345" has any "3"
+	then
+                set TEMP"1" to MARC."345" subfields "3"
+add prefix (TEMP"1","Materials specified: ") 
+create pnx."display"."lds54" with TEMP"1"
+end
+
+rule "Primo VE Marc - Lsr54"
+	when
+		MARC."344" has any "a,b,c,d,e,f,g,h,i,j"
+    then
+   	 create pnx."search"."lsr54" with MARC "344" subfields "a,b,c,d,e,f,g,h,i,j"
+end
+
+rule "Primo VE Marc - Lsr54/02"
+    when
+   	 MARC."345" has any "a,b"
+    then
+   	 create pnx."search"."lsr54" with MARC "345" subfields "a,b"
+end

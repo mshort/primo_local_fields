@@ -1,0 +1,7 @@
+rule "Primo VE - Lds83"
+	when
+		MARC."752" has any "a,b,c,d,e,f,g,h"
+	then
+                set TEMP"1" to MARC."752" sub without sorting "a,b,c,d,e,f,g,h" delimited by "--"
+		create pnx."display"."lds83" with TEMP"1"
+end

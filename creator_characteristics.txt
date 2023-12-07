@@ -1,0 +1,25 @@
+rule "Primo VE - Lds57"
+	when
+		MARC."386" has any "a,i"
+	then
+                set TEMP"1" to MARC."386" sub without sort "i"
+                set TEMP"2" to MARC."386" sub without sort "a"
+                replace spaces (TEMP"2",", ")
+                concatenate with delimiter  (TEMP"1",TEMP"2"," ")
+		create pnx."display"."lds57" with TEMP"1"
+end
+
+rule "Primo VE - Lds57/02"
+	when
+		MARC."386" has any "a"
+                MARC."386"."a" match ".*" AND NOT MARC."386"."i" match ".*"
+	then
+		create pnx."display"."lds57" with MARC."386" subfields "a"
+end
+
+rule "Primo VE Marc - Lsr57"
+	when
+		MARC is "386"."a"
+	then
+		create pnx."search"."lsr57" with MARC "386"."a"
+end

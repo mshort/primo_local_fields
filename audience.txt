@@ -1,0 +1,45 @@
+rule "Primo VE - Lds56"
+	when
+		MARC."385" has any "a,m,3"
+	then
+                set TEMP"1" to MARC."385" subfields "3"
+                set TEMP"2" to MARC."385" subfields "m"
+                set TEMP"3" to MARC."385" subfields "a"
+                concatenate with delimiter  (TEMP"1",TEMP"2"," ")
+                concatenate with delimiter  (TEMP"1",TEMP"3",": ")
+		create pnx."display"."lds56" with TEMP"1"
+end
+
+rule "Primo VE - Lds56/02"
+	when
+		MARC."521" has any "a,3"
+	then
+                set TEMP"1" to MARC."521" subfields "3"
+                set TEMP"2" to MARC."521" subfields "a"
+                concatenate with delimiter  (TEMP"1",TEMP"2",": ")
+		create pnx."display"."lds56" with TEMP"1"
+end
+
+rule "Primo VE Marc - Lsr56"
+	when
+		MARC is "385"."a"
+	then
+		create pnx."search"."lsr56" with MARC "385"."a"
+end
+
+rule "Primo VE Marc - Lsr56/02"
+	when
+		MARC is "385"."m"
+	then
+		create pnx."search"."lsr56" with MARC "385"."m"
+end
+
+rule "Primo VE Marc - Lsr56/03"
+	when
+		MARC is "521"."a"
+	then
+		create pnx."search"."lsr56" with MARC "521"."a"
+end
+
+
+
